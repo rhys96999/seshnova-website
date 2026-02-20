@@ -45,6 +45,15 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Cookiebot — must load before GA to block until consent given */}
+        <Script
+          id="Cookiebot"
+          src="https://consent.cookiebot.com/uc.js"
+          data-cbid="af12e2b5-09cc-4dc7-8e36-d37b65107e41"
+          data-blockingmode="auto"
+          strategy="beforeInteractive"
+        />
+        {/* Google Analytics — Cookiebot blocks this until consent */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
           strategy="afterInteractive"
@@ -54,9 +63,7 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}', {
-              page_path: window.location.pathname,
-            });
+            gtag('config', '${GA_MEASUREMENT_ID}');
           `}
         </Script>
       </head>
