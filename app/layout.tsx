@@ -12,6 +12,11 @@ const inter = Inter({
 const GA_MEASUREMENT_ID = "G-79GVT244W7";
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   title: "Seshnova — Real-time session monetisation and fraud protection",
   description:
     "Seshnova meters and rates sessions in real time, tracks entitlement, and enforces hard cut-off the moment credit or allowance runs out.",
