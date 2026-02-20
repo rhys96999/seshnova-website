@@ -48,8 +48,13 @@ export default function PrivacyPage() {
           </h1>
           <p className="text-slate-500 text-sm mb-10">seshnova.com</p>
 
-          {/* Usercentrics injects the policy content into this div */}
-          <div className="uc-privacy-policy text-slate-400 leading-relaxed" />
+          {/* Light card so Usercentrics-injected text has proper contrast */}
+          <div
+            className="rounded-xl p-8 md:p-10"
+            style={{ background: "#f8fafc", color: "#0f172a" }}
+          >
+            <div className="uc-privacy-policy" />
+          </div>
         </div>
       </section>
 
