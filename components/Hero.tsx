@@ -37,7 +37,7 @@ export default function Hero() {
           }}
         >
           <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-          Telecom-first. Built for high-volume, real-time enforcement.
+          The enforcement layer for prepaid services.
         </motion.div>
 
         {/* Headline */}

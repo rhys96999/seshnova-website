@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const inter = Inter({
@@ -8,15 +9,17 @@ const inter = Inter({
   display: "swap",
 });
 
+const GA_MEASUREMENT_ID = "G-79GVT244W7";
+
 export const metadata: Metadata = {
-  title: "Seshnova — Prepaid Billing for Any Session",
+  title: "Seshnova — Real-time session monetisation and fraud protection",
   description:
-    "A real-time prepaid session billing platform. Meter and monetize any time-based session — from phone calls to parking, gaming credits to coworking desks.",
+    "Seshnova meters and rates sessions in real time, tracks entitlement, and enforces hard cut-off the moment credit or allowance runs out.",
   metadataBase: new URL("https://seshnova.com"),
   openGraph: {
-    title: "Seshnova — Prepaid Billing for Any Session",
+    title: "Seshnova — Real-time session monetisation and fraud protection",
     description:
-      "A real-time prepaid session billing platform. Meter and monetize any time-based session — from phone calls to parking, gaming credits to coworking desks.",
+      "Seshnova meters and rates sessions in real time, tracks entitlement, and enforces hard cut-off the moment credit or allowance runs out.",
     url: "https://seshnova.com",
     siteName: "Seshnova",
     locale: "en_GB",
@@ -24,9 +27,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Seshnova — Prepaid Billing for Any Session",
+    title: "Seshnova — Real-time session monetisation and fraud protection",
     description:
-      "Meter and monetize any prepaid session in real time. Battle-tested billing infrastructure as a service.",
+      "The enforcement layer for prepaid services. Rate live, track entitlement, end sessions instantly.",
   },
   robots: {
     index: true,
@@ -41,6 +44,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <Script
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}', {
+              page_path: window.location.pathname,
+            });
+          `}
+        </Script>
+      </head>
       <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   );
