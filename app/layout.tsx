@@ -45,6 +45,14 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <head>
+        {/* Usercentrics Privacy Policy Generator */}
+        <Script
+          id="usercentrics-ppg"
+          src="https://policygenerator.usercentrics.eu/api/privacy-policy"
+          data-privacy-policy-id="86cd5e3c-c7c8-4be1-b4fd-9be8d51c5243"
+          data-language="en"
+          strategy="beforeInteractive"
+        />
         {/* Cookiebot — must load before GA to block until consent given */}
         <Script
           id="Cookiebot"

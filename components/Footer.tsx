@@ -55,9 +55,13 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 text-center text-xs text-slate-700">
-          &copy; {new Date().getFullYear()} Seshnova. All rights reserved.
+        {/* Copyright + legal */}
+        <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-xs text-slate-700">
+          <span>&copy; {new Date().getFullYear()} Seshnova. All rights reserved.</span>
+          <span className="hidden sm:inline">·</span>
+          <a href="/privacy" className="hover:text-slate-400 transition-colors">
+            Privacy Policy
+          </a>
         </div>
       </div>
     </footer>
