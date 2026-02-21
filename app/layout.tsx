@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   description:
     "Seshnova meters and rates sessions in real time, tracks entitlement, and enforces hard cut-off the moment credit or allowance runs out.",
   metadataBase: new URL("https://seshnova.com"),
+  alternates: { canonical: "https://seshnova.com" },
   openGraph: {
     title: "Seshnova — Real-time session monetisation and fraud protection",
     description:
