@@ -38,9 +38,32 @@ export default function ContactSection() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSending(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSending(false);
-    setSubmitted(true);
+
+    try {
+      const data = new FormData(e.currentTarget);
+      const res = await fetch("https://formspree.io/f/xbdappwa", {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        // Fire GA4 conversion event
+        if (typeof window !== "undefined" && (window as any).gtag) {
+          (window as any).gtag("event", "form_submit", {
+            event_category: "engagement",
+            event_label: "contact_form",
+          });
+        }
+        setSubmitted(true);
+      } else {
+        alert("Something went wrong — please email us at hello@seshnova.com");
+      }
+    } catch {
+      alert("Something went wrong — please email us at hello@seshnova.com");
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
